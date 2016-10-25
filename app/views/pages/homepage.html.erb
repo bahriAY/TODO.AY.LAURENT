@@ -1,0 +1,26 @@
+<h1>TODO</h1>
+
+<table>
+       <tr>
+       <th style="color:red;"> Task </th>
+       <th style="color:red;"> Department </th>
+       <th style="color: blue;">Employees </th>
+       <th style="color: gree;">Deadline </th>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td><%= task.name %></td>
+        <td><%= task.department.name %></td>
+	<td>LOL</td>
+	<td><%= task.deadline%></td>
+      </tr>
+    <% end %>
+</table>
+</br>
+<%= link_to 'Task area', '/tasks'%>
+</br>
+<%= link_to 'Manager area', '/managers'%>
+</br>
+<%= link_to 'Employee area', '/employees'%>
+</br>
+<%= link_to 'Department area', '/departments'%>
+
