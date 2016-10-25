@@ -11,13 +11,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161025012754) do
+ActiveRecord::Schema.define(version: 20161025183051) do
+
+  create_table "departements_tasks", force: :cascade do |t|
+    t.integer "departement_id"
+    t.integer "task_id"
+  end
+
+  add_index "departements_tasks", ["departement_id"], name: "index_departements_tasks_on_departement_id"
+  add_index "departements_tasks", ["task_id"], name: "index_departements_tasks_on_task_id"
 
   create_table "departments", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "departments_employees", force: :cascade do |t|
+    t.integer  "department_id"
+    t.integer  "employee_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "departments_employees", ["department_id"], name: "index_departments_employees_on_department_id"
+  add_index "departments_employees", ["employee_id"], name: "index_departments_employees_on_employee_id"
+
+  create_table "employdepts", force: :cascade do |t|
+    t.integer  "department_id"
+    t.integer  "employee_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "employdepts", ["department_id"], name: "index_employdepts_on_department_id"
+  add_index "employdepts", ["employee_id"], name: "index_employdepts_on_employee_id"
 
   create_table "employees", force: :cascade do |t|
     t.string   "name"
