@@ -6,18 +6,21 @@
        <tr>
        <th style="color:red;"> Task </th>
        <th style="color:red;"> Department </th>
-       <th style="color: blue;">Employees </th>
+       <th style="color: blue;">Managers </th>
        <th style="color: gree;">Deadline </th>
        </tr>
        </thead>
      <tbody>
-    <% @tasks.each do |task| %>
-    <% @employees.each do |employee| %>
-      
+    <% @tasks.each do |task| %> 
+   <% @managers = Manager.where(department_id:  task.department_id  )%> 
+ <!-- on definit @managers: Selectionner à chaque fois le manager dont le department id correspond à celui de la "task" en question -->
+
+     <% @managers.each do |manager| %>
+ <!--Nous allons parcourir @managers qui et selectionner le "manager" à chaque fois" -->
         <tr>
         <td><%= task.name %></td>
         <td><%= task.department.name %></td>
-        <td><%= employee.name %></td>
+        <td><%= manager.name %></td>
 	<td><%= task.deadline%></td>
       </tr>
     <% end %>
