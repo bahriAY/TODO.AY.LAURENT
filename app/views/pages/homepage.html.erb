@@ -29,6 +29,9 @@
 </table>
 </br>
 
+
+<!-- Ici nous mettons une condition pour que seul les managers connectés puissent ajouter des tasks, des departments et des employés -->
+<% if session[:user_id] != nil %>
 </br>
 <%= link_to 'Task area', '/tasks'%>
 </br>
@@ -37,4 +40,4 @@
 <%= link_to 'Employee area', '/employees'%>
 </br>
 <%= link_to 'Department area', '/departments'%>
-
+<% end %>
