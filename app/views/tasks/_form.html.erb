@@ -23,11 +23,17 @@
     <%= f.label :deadline %><br>
     <%= f.date_select :deadline %>
   </div>
-  <div class="field">
+
+<!--  <div class="field"> Choix du department en entrant l'ID du department
     <%= f.label :department_id %><br>
     <%= f.text_field :department_id %>
   </div>
-  <div class="actions">
+  <div class="actions"> -->
+
+<!-- Liste deroulante affichant les departments attribuables -->
+<p> Department </p>
+<%= f.select :department_id, Department.all.collect { |p| [ p.name, p.id ] }, include_blank: true %>
+<br><br>
     <%= f.submit %>
   </div>
 <% end %>

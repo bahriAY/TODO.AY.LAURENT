@@ -1,13 +1,21 @@
 <h1>TODO</h1>
 
 
+<%= form_tag("/#", method: "get") do %>
+  <%= label_tag(:recherche, "Search task for departments:") %>
+  <%= text_field_tag(:recherche) %>
+  <%= submit_tag("Search") %>
+<% end %>
+<br>
+
 <table>
        </thead>
        <tr>
-       <th style="color:red;"> Task </th>
-       <th style="color:red;"> Department </th>
+       <th style="color: red;"> Task </th>
+       <th style="color: orange;"> Department </th>
+       <th> Employees </th>
        <th style="color: blue;">Managers </th>
-       <th style="color: gree;">Deadline </th>
+       <th style="color: green;">Deadline </th>
        </tr>
        </thead>
      <tbody>
@@ -15,11 +23,19 @@
    <% @managers = Manager.where(department_id:  task.department_id  )%> 
  <!-- on definit @managers: Selectionner à chaque fois le manager dont le department id correspond à celui de la "task" en question -->
 
+   <% @employees = Employee.where(department_id: task.department_id )%>
+
      <% @managers.each do |manager| %>
  <!--Nous allons parcourir @managers qui et selectionner le "manager" à chaque fois" -->
         <tr>
         <td><%= task.name %></td>
         <td><%= task.department.name %></td>
+        <td>
+<% @employees.each do |employee| %>
+<p><%= employee.name %></p>
+<% end %>
+        
+        </td>
         <td><%= manager.name %></td>
 	<td><%= task.deadline%></td>
       </tr>
@@ -30,7 +46,7 @@
 </br>
 
 
-<!-- Ici nous mettons une condition pour que seul les managers connectés puissent ajouter des tasks, des departments et des employés -->
+<!-- Ici nous mettons une condition pour que seul les administrateurs connectés puissent ajouter des tasks, des departments et des employés -->
 <% if session[:user_id] != nil %>
 </br>
 <%= link_to 'Task area', '/tasks'%>

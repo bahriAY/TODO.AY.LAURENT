@@ -15,11 +15,15 @@
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
-  <div class="field">
+<!--   <div class="field"> Choix du department ID
     <%= f.label :department_id %><br>
     <%= f.text_field :department_id %>
   </div>
-  <div class="actions">
+  <div class="actions"> -->
+<p> Department </p>
+<%= f.select :department_id, Department.all.collect { |p| [ p.name, p.id ] }, include_blank: true %>
+<br><br>
+
     <%= f.submit %>
   </div>
 <% end %>

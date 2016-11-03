@@ -15,11 +15,20 @@
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
-  <div class="field">
-    <%= f.label :department_id %><br>
-    <%= f.text_field :department_id %>
+
+<!--  <div class="field">  Pour choisir le departement en utilisant l'id du departement
+  <p> <%= f.label :department_id %> ID</p>
+  <br>
+  <%= f.text_field :department_id %> 
   </div>
   <div class="actions">
-    <%= f.submit %>
+-->
+
+<p> Department</p> 
+<!-- Liste deroulante où nous pouvont choisir le department auquel appartient un employé -->
+<%= f.select :department_id, Department.all.collect { |p| [ p.name, p.id ] }, include_blank: true %>
+<br><br>
+ <%= f.submit %>
   </div>
 <% end %>
+
