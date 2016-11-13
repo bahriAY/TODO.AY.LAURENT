@@ -6,6 +6,11 @@ class DepartmentsController < ApplicationController
   # GET /departments.json
   def index
     @departments = Department.all
+  if params[:search]
+    @departments = Department.search(params[:search]).order("created_at DESC")
+  else
+    @departments = Department.all.order("created_at DESC")
+  end
   end
 
   # GET /departments/1

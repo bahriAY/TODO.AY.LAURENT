@@ -2,26 +2,48 @@
 
 <h1>Listing Departments</h1>
 
-<table>
+<table id="Taskstable">
   <thead>
     <tr>
       <th>Name</th>
-      <th colspan="3"></th>
+      <th>Tasks</th>
+<% if session[:user_id] != nil %>
+  
+    <th colspan="4">OPTIONS</th>
+<%end%>
     </tr>
   </thead>
 
   <tbody>
+    
     <% @departments.each do |department| %>
-      <tr>
-        <td><%= department.name %></td>
+    <% @tasks = Task.where(department_id: department.id)%>
+  
+       <tr>
+        
+	<td>	
+	<%= department.name %>
+	</td>
+	
+	<td>
+	<% @tasks.each do |task| %>
+	<p>_<%= task.name %></p>
+	<% end %>
+	</td>
+
+<% if session[:user_id] != nil %>
         <td><%= link_to 'Show', department %></td>
         <td><%= link_to 'Edit', edit_department_path(department) %></td>
         <td><%= link_to 'Destroy', department, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<% end %>
+
       </tr>
+
     <% end %>
   </tbody>
 </table>
 
 <br>
-
+<% if session[:user_id] != nil %>
 <%= link_to 'New Department', new_department_path %>
+<% end %>

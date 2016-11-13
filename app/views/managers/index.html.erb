@@ -16,14 +16,17 @@
       <tr>
         <td><%= manager.name %></td>
         <td><%= manager.department.name %></td>
+<% if session[:user_id] != nil %>
         <td><%= link_to 'Show', manager %></td>
         <td><%= link_to 'Edit', edit_manager_path(manager) %></td>
         <td><%= link_to 'Destroy', manager, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
+<% if session[:user_id] != nil %>
 <%= link_to 'New Manager', new_manager_path %>
+<% end %>

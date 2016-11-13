@@ -20,9 +20,12 @@
         <td><%= task.description %></td>
         <td><%= task.deadline %></td>
         <td><%= task.department.name %></td>
+<% if session[:user_id] != nil %>
+
         <td><%= link_to 'Show', task %></td>
         <td><%= link_to 'Edit', edit_task_path(task) %></td>
         <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<% end %>
       </tr>
     <% end %>
   </tbody>
@@ -30,5 +33,9 @@
 </table>
 
 <br>
-
+<% if @tasks.blank? %>
+  <h4>There are no task containing the term <%= params[:search] %>.</h4>
+<% end %>
+<% if session[:user_id] != nil %>
 <%= link_to 'New Task', new_task_path %>
+<% end %>

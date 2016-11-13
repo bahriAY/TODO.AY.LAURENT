@@ -1,24 +1,16 @@
-<h1>TODO</h1>
+<h2> List of the current attributed tasks: </h2>
 
-
-<%= form_tag("/#", method: "get") do %>
-  <%= label_tag(:recherche, "Search task for departments:") %>
-  <%= text_field_tag(:recherche) %>
-  <%= submit_tag("Search") %>
-<% end %>
-<br>
-
-<table>
+<table id="Taskstable">
        </thead>
        <tr>
-       <th style="color: red;"> Task </th>
-       <th style="color: orange;"> Department </th>
+       <th> Task </th>
+       <th> Department </th>
        <th> Employees </th>
-       <th style="color: blue;">Managers </th>
-       <th style="color: green;">Deadline </th>
+       <th>Managers </th>
+       <th>Deadline </th>
        </tr>
-       </thead>
-     <tbody>
+       </thead> 
+    <tbody>
     <% @tasks.each do |task| %> 
    <% @managers = Manager.where(department_id:  task.department_id  )%> 
  <!-- on definit @managers: Selectionner à chaque fois le manager dont le department id correspond à celui de la "task" en question -->
@@ -32,7 +24,7 @@
         <td><%= task.department.name %></td>
         <td>
 <% @employees.each do |employee| %>
-<p><%= employee.name %></p>
+<p>_<%= employee.name %></p>
 <% end %>
         
         </td>
@@ -41,7 +33,7 @@
       </tr>
     <% end %>
     <% end %>
-    </tbody>
+   </tbody>
 </table>
 </br>
 
