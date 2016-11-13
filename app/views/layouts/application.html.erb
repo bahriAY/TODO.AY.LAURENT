@@ -15,7 +15,9 @@ Logged in as <%= current_user.email %>.
 <%= link_to "ADMIN:Sign Up ", signup_path %> or <!--sinon envoyé vers inscription ou connection -->
 <%= link_to "ADMIN:Log In", login_path %>
 <% end %>
-<h1> TO DO AREA </h1>
+
+<h1 > TO DO AREA </h1>
+
 <%= form_tag(departments_path, :method => "get", id: "search-form") do %>
     <%= text_field_tag :search, params[:search], placeholder: "What is your Department?" %>
     <%= submit_tag "Search", :name => nil %>
