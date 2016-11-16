@@ -1,0 +1,36 @@
+<%= form_for(@meeting) do |f| %>
+  <% if @meeting.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@meeting.errors.count, "error") %> prohibited this meeting from being saved:</h2>
+
+      <ul>
+      <% @meeting.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :topic %><br>
+    <%= f.text_field :topic %>
+  </div>
+
+<p> Department</p>
+<!-- Liste deroulante où nous pouvont choisir le department -->
+<%= f.select :department_id, Department.all.collect { |p| [ p.name, p.id ] }, include_blank: true %>
+<br><br>
+  
+<p> Location</p>
+<!-- Liste deroulante où nous pouvont choisir le lieu de la reunion -->
+<%= f.select :location_id, Location.all.collect { |p| [ p.city, p.id ] }, include_blank: true %>
+<br><br>
+
+  <div class="field">
+    <%= f.label :date %><br>
+    <%= f.date_select :date %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

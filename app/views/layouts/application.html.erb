@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>WebProjectAL</title>
+  <title>PROJET WEB AY-LAURENT</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 <div id="user_header">
-<%= link_to 'Home', root_path %> | <!--raccourci vers le head -->
-<%= link_to 'Posts', posts_path %> |
+<%= link_to 'Home', root_path %> | <!--raccourci vers la homepage -->
 
-<% if current_user %>   <!-- Si il y a un utilisateur connécté -->                 
+<% if current_user %>   <!-- Si il y a un utilisateur connécté -->
+<%= link_to 'Posts', posts_path %> |
+                 
 Logged in as <%= current_user.email %>.
 <%= link_to "Log Out", logout_path %>
 <% else %>
@@ -19,7 +20,22 @@ Logged in as <%= current_user.email %>.
 <%= link_to "ADMIN:Log In", login_path %>
 <% end %>
 
+<!-- Ici nous mettons une condition pour que seul les administrateurs connectés puissent ajouter des tasks, des departments et des employés -->
+<% if session[:user_id] != nil %>
+</br>
+<ul id="menu_horizontal">
+<li><%= link_to 'Task area', '/tasks'%></li>
+<li><%= link_to 'Manager area', '/managers'%></li>
+<li><%= link_to 'Employee area', '/employees'%></li>
+<li><%= link_to 'Department area', '/departments'%></li>
+<li><%= link_to 'Location (Room) for meeting', '/locations'%></li>
+<li><%= link_to 'Meetings area', '/meetings' %></li>
+</ul>
+<% end %>
+
 <h1 > TO DO AREA </h1>
+
+
 
 <%= form_tag(departments_path, :method => "get", id: "search-form") do %>
     <%= text_field_tag :search, params[:search], placeholder: "What is your Department?" %>

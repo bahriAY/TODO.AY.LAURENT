@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  resources :meetings
+  resources :locations
+  get 'logos/index'
+
+  get 'logos/new'
+
+  get 'logos/create'
+
+  get 'logos/destroy'
+
   resources :posts
   resources :sessions, only: [:new, :create, :destroy]
   get 'signup', to: 'users#new', as: 'signup'

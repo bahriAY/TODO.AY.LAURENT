@@ -26,3 +26,30 @@
     color: white;
     border: 2px solid #ddd;
 }
+
+
+
+#meetingtable {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+   width: 60%;
+}
+
+#meetingtable td, #meetingtable th {
+    border: 2px solid #ddd;
+    padding: 2px;
+    text-align: center;
+}
+
+#meetingstable tr:nth-child(even){background-color: #f2f2f2;;}
+
+#meetingtable tr:hover {background-color: #FFD700;}
+
+#meetingtable th {
+    padding-top: 13px;
+    padding-bottom: 13px;
+    text-align: center;
+    background-color: #EE82EE;
+    color: white;
+    border: 2px solid #ddd;
+}  

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161113175440) do
+ActiveRecord::Schema.define(version: 20161115231655) do
 
   create_table "departments", force: :cascade do |t|
     t.string   "name"
@@ -28,6 +28,21 @@ ActiveRecord::Schema.define(version: 20161113175440) do
 
   add_index "employees", ["department_id"], name: "index_employees_on_department_id"
 
+  create_table "locations", force: :cascade do |t|
+    t.string   "city"
+    t.string   "building"
+    t.string   "room"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "logos", force: :cascade do |t|
+    t.string   "name"
+    t.string   "attachment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "managers", force: :cascade do |t|
     t.string   "name"
     t.integer  "department_id"
@@ -36,6 +51,18 @@ ActiveRecord::Schema.define(version: 20161113175440) do
   end
 
   add_index "managers", ["department_id"], name: "index_managers_on_department_id"
+
+  create_table "meetings", force: :cascade do |t|
+    t.string   "topic"
+    t.integer  "department_id"
+    t.integer  "location_id"
+    t.date     "date"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "meetings", ["department_id"], name: "index_meetings_on_department_id"
+  add_index "meetings", ["location_id"], name: "index_meetings_on_location_id"
 
   create_table "posts", force: :cascade do |t|
     t.integer  "user_id"

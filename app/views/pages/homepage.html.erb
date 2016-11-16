@@ -1,3 +1,5 @@
+
+
 <h2> List of the current attributed tasks: </h2>
 
 <table id="Taskstable">
@@ -35,17 +37,33 @@
     <% end %>
    </tbody>
 </table>
+
+
+<h2> List of the meetings: </h2>
+<table id="meetingtable">
+       </thead>
+       <tr>
+       <th>Meeting's topic</th>
+       <th> Department </th>
+       <th> Location</th>
+       <th> Date</th>
+       </tr>
+       </thead>
+    <tbody>
+    <% @meetings = Meeting.all %>
+    <% @meetings.each do |meeting| %>
+        <tr>
+        <td><%= meeting.topic %></td>
+        <td><%= meeting.department.name %></td>
+        <td><%= meeting.location.city%></br><%= meeting.location.building %></br><%= meeting.location.room %></td>
+        <td><%= meeting.date%></td>
+       
+      </tr>
+    <% end %>
+   </tbody>
+</table>
+
 </br>
 
 
-<!-- Ici nous mettons une condition pour que seul les administrateurs connectés puissent ajouter des tasks, des departments et des employés -->
-<% if session[:user_id] != nil %>
-</br>
-<%= link_to 'Task area', '/tasks'%>
-</br>
-<%= link_to 'Manager area', '/managers'%>
-</br>
-<%= link_to 'Employee area', '/employees'%>
-</br>
-<%= link_to 'Department area', '/departments'%>
-<% end %>
+

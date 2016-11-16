@@ -29,6 +29,8 @@ gem 'table_print'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
+gem 'carrierwave'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
