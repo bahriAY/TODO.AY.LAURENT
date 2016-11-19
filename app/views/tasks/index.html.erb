@@ -2,7 +2,9 @@
 
 <h1>Listing Tasks</h1>
 
-<table>
+<p id="ptop"> Assign tasks to each department with a deadline. </p>
+
+<table id="Taskstable">
   <thead>
     <tr>
       <th>Name</th>
@@ -37,5 +39,5 @@
   <h4>There are no task containing the term <%= params[:search] %>.</h4>
 <% end %>
 <% if session[:user_id] != nil %>
-<%= link_to 'New Task', new_task_path %>
+<strong><%= link_to 'New Task', new_task_path %></strong>
 <% end %>

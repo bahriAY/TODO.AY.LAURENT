@@ -6,50 +6,74 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+
 <body>
-<div id="user_header">
-<%= link_to 'Home', root_path %> | <!--raccourci vers la homepage -->
-
-<% if current_user %>   <!-- Si il y a un utilisateur connécté -->
-<%= link_to 'Posts', posts_path %> |
-                 
-Logged in as <%= current_user.email %>.
-<%= link_to "Log Out", logout_path %>
-<% else %>
-<%= link_to "ADMIN:Sign Up ", signup_path %> or <!--sinon envoyé vers inscription ou connection -->
-<%= link_to "ADMIN:Log In", login_path %>
-<% end %>
-
-<!-- Ici nous mettons une condition pour que seul les administrateurs connectés puissent ajouter des tasks, des departments et des employés -->
-<% if session[:user_id] != nil %>
-</br>
-<ul id="menu_horizontal">
-<li><%= link_to 'Task area', '/tasks'%></li>
-<li><%= link_to 'Manager area', '/managers'%></li>
-<li><%= link_to 'Employee area', '/employees'%></li>
-<li><%= link_to 'Department area', '/departments'%></li>
-<li><%= link_to 'Location (Room) for meeting', '/locations'%></li>
-<li><%= link_to 'Meetings area', '/meetings' %></li>
-</ul>
-<% end %>
-
-<h1 > TO DO AREA </h1>
+  <header class="header-two-bars">
+    <div class="header-login-signup">
+      <div id="user_header">
+        <div class="header-limiter">
+        	<h1>TO DO <span>area</span></h1>
+          <nav id="first">
+            <a><%= link_to 'Home', root_path %></a> | <!--raccourci vers la homepage -->
+            <% if current_user %>   <!-- Si il y a un utilisateur connécté -->
+            <a><%= link_to 'Posts', posts_path %></a> |
+            Logged in as <%= current_user.email %>.
+            <a><%= link_to "Log Out", logout_path %></a>
+          </nav>
+            <% else %>
+          <nav id="second">
+            <a><%= link_to "Log In", login_path %></a> <!--sinon envoyé vers inscription ou connection -->
+             <a><%= link_to "Sign Up ", signup_path %></a>
+          </nav>
+            <% end %>
+         </div>
+        <!-- <h1 > TO DO AREA </h1> -->
+       </div>
+     </div>
+    <!-- Ici nous mettons une condition pour que seul les administrateurs connectés puissent ajouter des tasks, des departments et des employés -->
 
 
+     <div class="header-second-bar">
+       <div class="header-limiter">
+          <nav id="menu_horizontal">
+           <!-- les balises <a> pour les liens sont implicites -->
+            <%= form_tag(departments_path, :method => "get", id: "search-form") do %>
+            <%= text_field_tag :search, params[:search], placeholder: "What is your Department?" %>
+            <%= submit_tag "Search", :name => nil %>
+        <% end %>
+         <% if session[:user_id] != nil %>
+         <%= link_to 'Task area', '/tasks'%>
+         <%= link_to 'Manager area', '/managers'%>
+         <%= link_to 'Employee area', '/employees'%>
+         <%= link_to 'Department area', '/departments'%>
+         <%= link_to 'Location (Room) for meeting', '/locations'%>
+         <%= link_to 'Meetings area', '/meetings' %>
+         </nav>
+         <% end %>
+       </div>
+     </div>
+   </header>
+ </br>
+   <div>
 
-<%= form_tag(departments_path, :method => "get", id: "search-form") do %>
-    <%= text_field_tag :search, params[:search], placeholder: "What is your Department?" %>
-    <%= submit_tag "Search", :name => nil %>
-<% end %>
 
-</div>
-<% flash.each do |key, value| %>
-<%= content_tag(:div, class: "alert alert-#{key}") do %>
-<p><%= value %></p>
-<% end %>
-<% end %>
 
-<%= yield %>
+         <% flash.each do |key, value| %>
+         <%= content_tag(:div, class: "alert alert-#{key}") do %>
+         <p><%= value %></p>
+         <% end %>
+         <% end %>
+
+         <%= yield %>
+         </div>
+
+
+
+
+
+
+
+
 
 
 </body>

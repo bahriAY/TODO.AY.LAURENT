@@ -1,3 +1,51 @@
 // Place all the styles related to the Posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#ptop {
+  border: 2px solid #1c75c8;
+  padding: 3px;
+  background-color: #c5ddf6;
+  -moz-border-radius-topleft: 5px;
+  -moz-border-radius-topright: 5px;
+  -moz-border-radius-bottomright: 5px;
+  -moz-border-radius-bottomleft: 5px;
+  text-align: center;
+  margin-left: 50px;
+  margin-right: 50px;
+  font-family: Times New Roman,serif;
+  font-size: 15px;
+
+}
+
+h1 {
+  text-align: center;
+}
+
+
+#Taskstable {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+   width: 60%;
+   margin : 10px auto auto auto;
+
+}
+
+#Taskstable td, #Tasktable th {
+    border: 2px solid #ddd;
+    padding: 2px;
+    text-align: center;
+}
+
+#Taskstable tr:nth-child(even){background-color: #f2f2f2;;}
+
+#Taskstable tr:hover {background-color: #B0C4DE;}
+
+#Taskstable th {
+    padding-top: 13px;
+    padding-bottom: 13px;
+    text-align: center;
+    background-color: #8470FF;
+    color: white;
+    border: 2px solid #ddd;
+}

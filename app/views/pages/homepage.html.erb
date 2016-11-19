@@ -1,5 +1,8 @@
-
-
+<p id="ptop">  <strong> PRESENTATION </strong> : This site was made to help the work of the manager in the management of the projects: attribute tasks, organize meetings with ease and efficiency!!
+ You just have to create in the first place a department of the company.
+Then, indicate the managers and the employees of departments by going to " manager area " and " used area ".
+Finally attribute tasks to every department.</p>
+</br>
 <h2> List of the current attributed tasks: </h2>
 
 <table id="Taskstable">
@@ -11,10 +14,10 @@
        <th>Managers </th>
        <th>Deadline </th>
        </tr>
-       </thead> 
+       </thead>
     <tbody>
-    <% @tasks.each do |task| %> 
-   <% @managers = Manager.where(department_id:  task.department_id  )%> 
+    <% @tasks.each do |task| %>
+   <% @managers = Manager.where(department_id:  task.department_id  )%>
  <!-- on definit @managers: Selectionner à chaque fois le manager dont le department id correspond à celui de la "task" en question -->
 
    <% @employees = Employee.where(department_id: task.department_id )%>
@@ -28,7 +31,7 @@
 <% @employees.each do |employee| %>
 <p>_<%= employee.name %></p>
 <% end %>
-        
+
         </td>
         <td><%= manager.name %></td>
 	<td><%= task.deadline%></td>
@@ -57,13 +60,10 @@
         <td><%= meeting.department.name %></td>
         <td><%= meeting.location.city%></br><%= meeting.location.building %></br><%= meeting.location.room %></td>
         <td><%= meeting.date%></td>
-       
+
       </tr>
     <% end %>
    </tbody>
 </table>
 
 </br>
-
-
-

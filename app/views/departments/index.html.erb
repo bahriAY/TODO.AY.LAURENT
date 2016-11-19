@@ -2,29 +2,30 @@
 
 <h2>Listing Departments</h2>
 
+<p id="ptop"> Create your departments here. </p>
 <table id="Taskstable">
   <thead>
     <tr>
       <th>Department's name</th>
       <th>Tasks</th>
 <% if session[:user_id] != nil %>
-  
+
     <th colspan="4">OPTIONS</th>
 <%end%>
     </tr>
   </thead>
 
   <tbody>
-    
+
     <% @departments.each do |department| %>
     <% @tasks = Task.where(department_id: department.id)%>
-  
+
        <tr>
-        
-	<td>	
+
+	<td>
 	<%= department.name %>
 	</td>
-	
+
 	<td>
 	<% @tasks.each do |task| %>
 	<p>_<%= task.name %></p>

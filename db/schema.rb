@@ -36,13 +36,6 @@ ActiveRecord::Schema.define(version: 20161115231655) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "logos", force: :cascade do |t|
-    t.string   "name"
-    t.string   "attachment"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "managers", force: :cascade do |t|
     t.string   "name"
     t.integer  "department_id"

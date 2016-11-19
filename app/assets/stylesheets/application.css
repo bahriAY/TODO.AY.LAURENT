@@ -13,33 +13,155 @@
  *= require_tree .
  *= require_self
  */
-h1
-{
-  font-size: 40px;
-  text-shadow: -1px -1px #4169E1, 1px 1px #4169E1, -3px 0 4px #000080;
-  font-family:Arial, Helvetica, sans-serif;
-  color: #191970;
-  padding:20px;
-  font-weight:bold;
-  -moz-box-shadow: 4px 2px 6px #888;  
-  -webkit-box-shadow: 2px 2px 6px #888;  
-  box-shadow:2px 2px 6px #888;  
-  text-align:center;
-  display:block;
-  margin:16px;
-  background-color: #B0C4DE;
+
+/* Ajout dans le header */
+
+.header-two-bars{
+	font:13px Arial, Helvetica, sans-serif;
 }
 
-ul#menu_horizontal li { 
 
-display : inline;
 
-padding : 0 0.5em; /* Pour espacer les boutons entre eux */
+.header-two-bars .header-limiter{
+	max-width: 1200px;
+	text-align: left;
+	margin: 0 auto;
+}
+
+/* Logo */
+
+.header-two-bars h1{
+	float: left;
+	font: normal 28px Cookie, Arial, Helvetica, sans-serif;
+	line-height: 40px;
+	margin: 0;
+}
+
+.header-two-bars h1 span {
+	color: #5383d3;
+}
+/* La première bar */
+
+.header-two-bars .header-login-signup{
+	background-color:#292c2f;
+	box-shadow:0 1px 1px #ccc;
+	padding: 20px 40px;
+	height: 80px;
+	color: #ffffff;
+	box-sizing: border-box;
 
 }
 
-ul#menu_horizontal {
+/* Les liens de  navigation  */
 
-list-style-type : none; /* Car sinon les puces se placent n'importe où */
+.header-login-signup .header-limiter a {
+	color: #ffffff;
+	text-decoration: none;
+}
 
+.header-login-signup .header-limiter nav #first  {
+  font: 14px Arial, Helvetica, sans-serif;
+	list-style: none;
+	line-height: 1;
+	float: left;
+}
+
+.header-login-signup .header-limiter nav #second a   {
+	display: inline-block;
+	margin-left: 15px;
+	opacity:0.9;
+}
+
+
+.header-login-signup .header-limiter nav #first a  {
+	display: inline-block;
+	opacity: 0.9;
+  margin-left: 15px;
+}
+
+.header-login-signup .header-limiter nav #first a:hover  {
+	opacity: 1;
+}
+
+.header-login-signup .header-limiter nav #first a.selected  {
+	color: #608bd2;
+}
+
+/* les bouttons Login/Sign up  */
+
+.header-login-signup .header-limiter nav #second {
+	font: 14px Arial, Helvetica, sans-serif;
+	list-style: none;
+	line-height: 1;
+	float: right;
+}
+
+.header-login-signup .header-limiter  nav #second a:hover  {
+	opacity: 1;
+}
+
+/* Le boutton Sign up */
+
+.header-login-signup .header-limiter  nav #second a:last-child {
+	font-weight: bold;
+	background-color: #3a3c3e;
+	padding: 10px 15px;
+	border-radius: 3px;
+}
+
+/* Entête général */
+
+@media all and (max-width: 600px) {
+
+	.header-login-signup {
+		padding: 25px;
+		height: 85px;
+	}
+}
+
+/*Initialise le margin et le padding du body */
+
+body {
+	margin:0;
+	padding:0;
+  background-color: #eaf0f2;
+}
+
+/*Seconde bar */
+.header-two-bars .header-second-bar {
+	background-color: #ffffff;
+	box-shadow: 1px 3px 3px 0 rgba(0, 0, 0, 0.05);
+	padding: 20px 40px;
+}
+
+/* positionne le texte à droite */
+.header-two-bars .header-second-bar nav {
+	text-align: right;
+	line-height: 20px;
+	font-size: 16px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+  list-style-type : none; /* Car sinon les puces se placent n'importe où */
+
+}
+
+.header-two-bars .header-second-bar nav a {
+	display: inline-block;
+	color: #4e5359;
+	text-decoration: none;
+  padding : 0 0.5em; /* Pour espacer les boutons entre eux */
+}
+
+.header-two-bars .header-second-bar nav a:hover {
+	color: #F0FFF0;
+}
+
+ nav form{
+  text-align: left;
+}
+
+/* Centre tous les formulaires */
+ form {
+ text-align: center;
 }
