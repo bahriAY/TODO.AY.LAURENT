@@ -35,12 +35,14 @@
 	<td>
 	<%= department.name %>
 	</td>
-
 	<td>
 	<% @tasks.each do |task| %>
-	<p>_<%= task.name %></p>
+	<p>_<strong><%= task.name %></strong></br></p>
+        <p><%= task.description %></br></p>
+        <p><%= task.deadline %></br></p>
 	<% end %>
 	</td>
+
 
 <% if session[:user_id] != nil %>
         <td><%= link_to 'Show', department %></td>
