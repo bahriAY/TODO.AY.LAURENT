@@ -1,9 +1,17 @@
-<p id="ptop">  <strong> PRESENTATION </strong> : This site was made to help the work of the manager in the management of the projects: attribute tasks, organize meetings with ease and efficiency!!
- You just have to create in the first place a department of the company.
-Then, indicate the managers and the employees of departments by going to " manager area " and " used area ".
-Finally attribute tasks to every department.</p>
+<p id="ptop">  <strong> PRESENTATION </strong> :</br> This website was made to help the work of the ADMINISTRATION AREA of a firm. </br>
+Administrators can create new Departments, they can attribute new Employees,Tasks and Managers to these Departments.</br>
+However this website will help the Administration Area to add new meeting's locations and to plan Meetings. They will be able to say to employees and managers where and when they will do the further meetings.</br>
+If you are an employee or manager of this firm, you can see below the list of Tasks and the list of Meetings.
+
+</p>
 </br>
 <h2> List of the current attributed tasks: </h2>
+
+           <!-- les balises <a> pour les liens sont implicites -->
+            <%= form_tag(departments_path, :method => "get", id: "search-form") do %>
+            <%= text_field_tag :search, params[:search], placeholder: "What is your Department?" %>
+            <%= submit_tag "Search", :name => nil %>
+        <% end %>
 
 <table id="Taskstable">
        </thead>
@@ -41,8 +49,14 @@ Finally attribute tasks to every department.</p>
    </tbody>
 </table>
 
+       
+</br>        
 
 <h2> List of the meetings: </h2>
+
+  
+
+
 <table id="meetingtable">
        </thead>
        <tr>

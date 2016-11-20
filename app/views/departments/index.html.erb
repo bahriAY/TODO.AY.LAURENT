@@ -1,8 +1,18 @@
 <p id="notice"><%= notice %></p>
+  
 
 <h2>Listing Departments</h2>
 
-<p id="ptop"> Create your departments here. </p>
+<p id="ptop"> HERE YOU CAN SEE THE TASKS ATTRIBUTED TO THE DEPARTMENTS. </p>
+
+           <!-- les balises <a> pour les liens sont implicites -->
+            <%= form_tag(departments_path, :method => "get", id: "search-form") do %>
+            <%= text_field_tag :search, params[:search], placeholder: "What is your Department?" %>
+            <%= submit_tag "Search", :name => nil %>
+        <% end %>
+
+
+        
 <table id="Taskstable">
   <thead>
     <tr>
@@ -19,7 +29,7 @@
 
     <% @departments.each do |department| %>
     <% @tasks = Task.where(department_id: department.id)%>
-
+    
        <tr>
 
 	<td>

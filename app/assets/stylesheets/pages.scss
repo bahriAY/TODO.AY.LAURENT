@@ -25,15 +25,16 @@ h2 {
 #Taskstable {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
-   width: 60%;
-   margin : 10px auto auto auto;
+   width: 10%;
+   margin : 2px auto auto auto;
 
 }
 
 #Taskstable td, #Tasktable th {
     border: 2px solid #ddd;
-    padding: 2px;
+    padding: 5px;
     text-align: center;
+    
 }
 
 #Taskstable tr:nth-child(even){background-color: #f2f2f2;;}

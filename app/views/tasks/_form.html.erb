@@ -2,7 +2,6 @@
   <% if @task.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
-
       <ul>
       <% @task.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -10,6 +9,7 @@
       </ul>
     </div>
   <% end %>
+<p id="ptop"> HERE YOU CAN CREATE NEW TASKS AND ATTRIBUTE THEM TO DEPARTMENTS, BUT YOU HAVE <strong>TO CREATE DEPARTMENTS BEFORE</strong> </p>
 
   <div class="field">
     <%= f.label :name %><br>
