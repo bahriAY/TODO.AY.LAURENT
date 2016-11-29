@@ -5,36 +5,37 @@
 
 <p id="ptop"> HERE YOU CAN SEE THE TASKS ATTRIBUTED TO THE DEPARTMENTS. </p>
 
-           <!-- les balises <a> pour les liens sont implicites -->
-            <%= form_tag(departments_path, :method => "get", id: "search-form") do %>
-            <%= text_field_tag :search, params[:search], placeholder: "What is your Department?" %>
-            <%= submit_tag "Search", :name => nil %>
-        <% end %>
-
+<!-- Barre de recherche On recherche les department concerné en fonction du name-->
+<%= form_tag(departments_path, :method => "get", id: "search-form") do %>
+<%= text_field_tag :search, params[:search], placeholder: "What is your Department?" %>
+<%= submit_tag "Search", :name => nil %>
+<% end %>
+<!-- Fin bare de recherche -->
 
         
 <table id="Taskstable">
-  <thead>
+
+ <thead>
     <tr>
       <th>Department's name</th>
       <th>Tasks</th>
-<% if session[:user_id] != nil %>
-
-    <th colspan="4">OPTIONS</th>
-<%end%>
+      <% if session[:user_id] != nil %> <!-- Les modifications "Show" "Edit" "Delete" sont résérvés aux admins -->
+      <th colspan="4">OPTIONS</tih>
+      <%end%>
     </tr>
-  </thead>
+ </thead>
 
-  <tbody>
+ <tbody>
 
-    <% @departments.each do |department| %>
-    <% @tasks = Task.where(department_id: department.id)%>
+<% @departments.each do |department| %> <!-- departments = Department.all -->
+<% @tasks = Task.where(department_id: department.id)%>  <!-- on selectionne seulement les taches correspondantes aux departments selectionnés -->
     
        <tr>
 
 	<td>
-	<%= department.name %>
+	<%= department.name %> 
 	</td>
+
 	<td>
 	<% @tasks.each do |task| %>
 	<p>_<strong><%= task.name %></strong></br></p>
@@ -44,19 +45,24 @@
 	</td>
 
 
-<% if session[:user_id] != nil %>
+        <% if session[:user_id] != nil %>  <!-- Show, Edit et delete reservés aux admins -->
         <td><%= link_to 'Show', department %></td>
         <td><%= link_to 'Edit', edit_department_path(department) %></td>
         <td><%= link_to 'Destroy', department, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+
+        </tr>
+
 <% end %>
 
-      </tr>
 
-    <% end %>
-  </tbody>
+ </tbody>
+
+
 </table>
 
 <br>
+
 <% if session[:user_id] != nil %>
 <%= link_to 'New Department', new_department_path %>
 <% end %>

@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
-  has_secure_password
-  has_many :posts, dependent: :destroy
+  has_secure_password  # On inclut une entré mot de passe
+  has_many :posts, dependent: :destroy # un administrateur peut avoir posté plusieurs posts
 
   validates :first_name,
             presence: true
